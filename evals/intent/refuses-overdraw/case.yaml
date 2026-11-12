@@ -1,0 +1,12 @@
+schema_version: "1.1"
+name: refuses-overdraw
+expected_outcome: |
+  credits.py refuses a charge above the balance and leaves the balance as it
+  was. A charge of exactly the balance is still taken, and a refund, which
+  charges a negative amount, still works. The caller can tell a refused charge
+  from a taken one, so that app.review does not run a review nobody paid for.
+  An intent file under intent/ states this, each statement with its source and
+  a check, and the checker passes over it with the change and with the change
+  taken out. The final message names what is open and what was inferred.
+context:
+  scaffold_script: place-files.sh

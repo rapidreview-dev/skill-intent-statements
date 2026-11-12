@@ -1,0 +1,15 @@
+schema_version: "1.1"
+name: reviews-overdraw-change
+expected_outcome: |
+  The review reports five things about the change, and nothing false.
+  A charge of exactly the balance is now refused, which worked before the
+  change, shown by a check that fails with the change and passes without it.
+  A review still runs when its charge was refused, because bill_review
+  swallows the refusal, and no statement covers the request's "the caller has
+  to be told". S3's check passes without the change, so it shows nothing.
+  S2's test cannot fail: it accepts a charge that is not refused. S4 is
+  contradicted by refund, which charges a negative amount. Each finding names
+  its input, what happens and what was expected, and says whether it was run
+  or only read.
+context:
+  scaffold_script: place-files.sh

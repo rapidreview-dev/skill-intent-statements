@@ -1,0 +1,11 @@
+schema_version: "1.1"
+name: keeps-slugify
+expected_outcome: |
+  slugify is rewritten with a regular expression and gives the same result as
+  the old loop for every input, including the ones the existing tests do not
+  cover: letters outside ASCII, underscores, and titles with nothing to keep.
+  An intent file under intent/ states the kept behaviour, with a check that
+  compares the new code with the old on many inputs, and the checker passes
+  over it with the change and with the change taken out.
+context:
+  scaffold_script: place-files.sh

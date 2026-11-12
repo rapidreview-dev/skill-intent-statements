@@ -1,0 +1,17 @@
+{
+  "name": "skill-intent-statements",
+  "version": "0.1.0",
+  "description": "Write a change as statements of intent, checks a machine runs, and code, in that order, and review a change against them. A script with no model checks every statement's evidence.",
+  "author": {
+    "name": "Rapid Review, Inc."
+  },
+  "license": "MIT",
+  "repository": "https://github.com/rapidreview-dev/skill-intent-statements",
+  "keywords": [
+    "intent",
+    "specification",
+    "testing",
+    "property-based-testing",
+    "code-review"
+  ]
+}

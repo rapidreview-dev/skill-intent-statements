@@ -1,0 +1,25 @@
+name: checks
+on:
+  pull_request:
+  push:
+    branches: [main]
+jobs:
+  tests:
+    runs-on: ubuntu-24.04
+    strategy:
+      matrix:
+        python: ["3.9", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: The script's and the plugin's tests
+        run: python -m unittest discover -s tests
+      - name: This repository's own intent files, with the change and without it
+        if: github.event_name == 'pull_request'
+        run: |
+          files=$(git diff --name-only --diff-filter=AM "origin/${{ github.base_ref }}...HEAD" -- 'intent/*.md')
+          [ -z "$files" ] || python skills/intent/scripts/intent_check.py $files --base "origin/${{ github.base_ref }}"

@@ -1,0 +1,14 @@
+{
+  "name": "skill-intent-statements",
+  "description": "The skill-intent-statements plugin: skills for stating a change's intent and reviewing against it.",
+  "owner": {
+    "name": "Rapid Review, Inc."
+  },
+  "plugins": [
+    {
+      "name": "skill-intent-statements",
+      "source": "./",
+      "description": "Skills for writing a change as statements of intent, checks and code, and for reviewing a change against them."
+    }
+  ]
+}
